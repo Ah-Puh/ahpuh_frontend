@@ -68,7 +68,12 @@ function LocationPage() {
                             onKeyDown={handleKeyDown}
                         />
                         <button className="search_btn" onClick={handleClick}>
-                            <img src={logo} alt="logo" className="logo" />
+                            <img
+                                src={logo}
+                                alt="logo"
+                                className="logo"
+                                style={{ width: "20px" }}
+                            />
                         </button>
                     </div>
                     <div className="card_section">
