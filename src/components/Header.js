@@ -1,11 +1,18 @@
 import React from "react";
 import "./Header.css";
 import logo from "../image/main_logo.png";
+import { useNavigate } from "react-router-dom";
 
 function Header(props) {
     const onLoginHandler = (e) => {
         e.preventDefault();
         console.log("login");
+    };
+    const navigate = useNavigate();
+
+    // 카드 선택 시 날짜 선택 페이지로 이동
+    const goToLoginPage = () => {
+        navigate(`/Login`);
     };
 
     return (
@@ -23,14 +30,14 @@ function Header(props) {
                         </a>
                     </div>
                     <div className="left-item">
-                        <a href="#">서핑하러 가기</a>
+                        <a href="/">서핑하러 가기</a>
                     </div>
                     <div className="left-item">
                         <a href="#">서비스 소개</a>
                     </div>
                 </div>
 
-                <button className="login-btn" onClick={onLoginHandler}>
+                <button className="login-btn" onClick={goToLoginPage}>
                     로그인
                 </button>
             </div>
