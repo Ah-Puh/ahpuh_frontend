@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Hedaer from "../../components/Header.js";
-import "./LocationPage.css";
+import styles from "./LocationPage.module.css";
 import logo from "../../image/search_icon.png";
 import Footer from "../../components/Footer.js";
 
@@ -49,36 +49,36 @@ function LocationPage() {
     };
 
     return (
-        <div className="main">
+        <div className={styles.main}>
             <Hedaer></Hedaer>
-            <div className="wrap">
-                <div className="contaier">
-                    <div className="title">
+            <div className={styles.wrap}>
+                <div className={styles.contaier}>
+                    <div className={styles.title}>
                         <h1>어디로 떠나시나요?</h1>
                     </div>
-                    <div className="search">
+                    <div className={styles.search}>
                         <input
-                            className="search_input"
+                            className={styles.search_input}
                             type="text"
                             placeholder="여행 장소를 검색해주세요."
                             value={searchValue}
                             onChange={handleInputChange}
                             onKeyDown={handleKeyDown}
                         />
-                        <button className="search_btn" onClick={handleClick}>
+                        <button className={styles.search_btn} onClick={handleClick}>
                             <img
                                 src={logo}
                                 alt="logo"
-                                className="logo"
+                                className={styles.logo}
                                 style={{ width: "20px", height: "23px" }}
                             />
                         </button>
                     </div>
-                    <div className="card_section">
+                    <div className={styles.card_section}>
                         {cardData.map((card) => (
                             <div
                                 key={card.id}
-                                className="card"
+                                className={styles.card}
                                 style={{
                                     backgroundImage: `url(/location_${card.id}.jpeg)`,
                                     backgroundSize: "cover",
