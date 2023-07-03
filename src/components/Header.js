@@ -18,7 +18,7 @@ function Header(props) {
                                 src={logo}
                                 alt="logo"
                                 className="logo"
-                                style={{ width: "100px" }}
+                                style={{ width: "100px", height: "100px" }}
                             />
                         </a>
                     </div>
