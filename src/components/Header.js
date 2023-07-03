@@ -15,6 +15,8 @@ function Header(props) {
         navigate(`/Login`);
     };
 
+    const storedId = localStorage.getItem('id');
+
     return (
         <>
             <div className="header">
@@ -37,7 +39,7 @@ function Header(props) {
                     </div>
                 </div>
 
-                <button className="login-btn" onClick={goToLoginPage}>
+                <button className="login-btn" onClick={goToLoginPage} style={{ display: storedId ? 'none' : 'block' }}>
                     로그인
                 </button>
             </div>

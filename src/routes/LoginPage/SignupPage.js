@@ -3,12 +3,18 @@ import Header from '../../components/Header';
 import styles from './LoginPage.module.css';
 import picture from '../../image/main_picture.jpg';
 import Footer from './../../components/Footer';
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
+  const navigate = useNavigate();
+
+  const goToLoginPage = () => {
+    navigate(`/Login`);
+  };
   return (
     <>
-      <div className='viewport'>
-        <div className='contents'>
+      <div className={styles.viewport}>
+        <div className={styles.contents}>
           <Header />
           <img className={styles.img} src={picture} />
           <div className={styles.login_container}>
@@ -28,7 +34,7 @@ function SignupPage() {
               />
             </div>
             <button className={styles.login_button}>회원가입</button>
-            <button className={styles.signup_button}>로그인</button>
+            <button className={styles.signup_button} onClick={goToLoginPage}>로그인</button>
           </div>
         </div>
         <Footer />
