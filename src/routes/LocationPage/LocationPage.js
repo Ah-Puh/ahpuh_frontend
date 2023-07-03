@@ -1,22 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Hedaer from "../../components/Header.js";
 import "./LocationPage.css";
 import logo from "../../image/search_icon.png";
 
 function LocationPage() {
     const [searchValue, setSearchValue] = useState("");
-    const [cardData, setCardData] = useState([
-        "카드 1",
-        "카드 2",
-        "카드 3",
-        "카드 4",
-        "카드 5",
-        "카드 6",
-        "카드 7",
-        "카드 8",
-        "카드 9",
-        "카드 10",
-    ]);
+    const [cardData, setCardData] = useState([]);
 
     const handleClick = () => {
         alert("버튼이 클릭되었습니다!");
@@ -32,6 +22,22 @@ function LocationPage() {
     const handleInputChange = (e) => {
         setSearchValue(e.target.value);
     };
+
+    useEffect(() => {
+        // 서버에서 데이터를 받아오는 함수
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    `/beach?keyword=${searchValue}`
+                );
+                setCardData(response.data.result);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, [searchValue]);
 
     return (
         <div className="main">
@@ -55,18 +61,16 @@ function LocationPage() {
                         </button>
                     </div>
                     <div className="card_section">
-                        {cardData.map((card, index) => (
+                        {cardData.map((card) => (
                             <div
-                                key={index}
+                                key={card.id}
                                 className="card"
                                 style={{
-                                    backgroundImage: `url(/location_${
-                                        index + 1
-                                    }.jpeg)`,
+                                    backgroundImage: `url(/location_${card.id}.jpeg)`,
                                     backgroundSize: "cover",
                                 }}
                             >
-                                <h1>{card}</h1>
+                                <h1>{card.name}</h1>
                             </div>
                         ))}
                     </div>
