@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Header from '../../components/Header';
-import './TutorPage.css';
+import styles from './TutorPage.module.css';
 import { Row } from 'antd';
 import TutorCard from './TutorCard';
 import axios from 'axios';
+import Footer from '../../components/Footer';
 
 function TutorPage() {
   const [days, setDays] = useState(null);
@@ -83,16 +84,16 @@ function TutorPage() {
   };
 
   return (
-    <div className='viewport'>
+    <div className={styles.viewport}>
       <Header />
-      <div className='contents'>
-        <p className='word'>
-          <div className='info'>망상 해수욕장 7월 17일</div>
+      <div className={styles.contents}>
+        <p className={styles.word}>
+          <div className={styles.info}>망상 해수욕장 7월 17일</div>
           <br />
-          <div className='info-word'>원하는 강사를 만나 보세요</div>
+          <div className={styles.info_word}>원하는 강사를 만나 보세요</div>
         </p>
 
-        <div className='btn-group'>
+        <div className={styles.btn_group}>
           <div
             style={{
               display: 'flex',
@@ -101,14 +102,14 @@ function TutorPage() {
             }}
           >
             <button
-              className='btn-time'
+              className={styles.btn_time}
               onClick={toggleTimeVisibility}
               ref={timeRef}
             >
               시간대 ▽
             </button>
             {!isTimeHidden && (
-              <div className='times'>
+              <div className={styles.times}>
                 <button onClick={onTimeClickHandler}>00</button>
                 <button onClick={onTimeClickHandler}>02</button>
                 <button onClick={onTimeClickHandler}>04</button>
@@ -126,20 +127,20 @@ function TutorPage() {
           </div>
 
           <button
-            className='btn-level'
+            className={styles.btn_level}
             onClick={toggleLevelVisibility}
             ref={levelRef}
           >
             난이도 ▽
           </button>
           {!isLevelHidden && (
-            <div className='levels'>
+            <div className={styles.levels}>
               <button onClick={onLevelClickHandler}>초급</button>
               <button onClick={onLevelClickHandler}>중급</button>
               <button onClick={onLevelClickHandler}>상급</button>
             </div>
           )}
-          <button className='search' onClick={onSearchHandle}>
+          <button className={styles.tutorsearch} onClick={onSearchHandle}>
             검색
           </button>
         </div>
@@ -182,6 +183,7 @@ function TutorPage() {
             ))}
         </Row> */}
       </div>
+      <Footer />
     </div>
   );
 }
