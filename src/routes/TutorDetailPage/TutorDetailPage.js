@@ -43,7 +43,20 @@ function TutorDetailPage() {
             <option value="option4">4명</option>
           </select>
         </div>
+        <div className={styles.right}>
+          <div className={styles.subTitle}>포함 서비스</div><div className={styles.leftli}><li>슈트 대여</li><li>샤워</li><li>샤워용품</li><li>사진 촬영</li></div>
+        </div>
+        <div className={styles.right}>
+          <div className={styles.subTitle}>예약 시 주의사항</div>
+          <div className={styles.subContents}>
+          <div className={styles.title}>취소/환불 규정</div>
+            <div className={styles.contents}>72시간 전 무료 취소 가능합니다</div>
+
+          </div>
+        </div>
       </div>
+      <div className={styles.leftTotal}>
+      <div className={styles.reserv}>₩ 51,000</div><button className={styles.reservBtn}>바로 예약</button></div>
       <Footer />
     </div>
   );
