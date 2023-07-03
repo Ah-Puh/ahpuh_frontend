@@ -12,21 +12,7 @@ function TutorPage() {
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedLevel, setSelectedLevel] = useState(null);
 
-  const [Tutors, setTutors] = useState([
-    1, 2, 3, 4, 5, 1, 1, 1, 1, 1, 11, 1, 1, 11, 1, 1, 1,
-  ]);
-
-  const [Tutor, setTutor] = useState([
-    {
-      id: 1,
-      image: '',
-      level: '초급',
-      mbti: 'ESTP',
-      personal: '열정',
-      verifi: true,
-      name: '서퍼살롱',
-    },
-  ]);
+  const [Tutor, setTutor] = useState([]);
 
   const timeRef = useRef();
   const onTimeClickHandler = (e) => {
@@ -60,27 +46,34 @@ function TutorPage() {
   };
 
   useEffect(() => {
-    setDays(localStorage.getItem('days'));
-    setPlace(localStorage.getItem('place'));
+    const call = async () => {
+      setDays(localStorage.getItem('days'));
+      setPlace(localStorage.getItem('place'));
 
-    // const response = axios.get('/tutor', {
-    //   params: {
-    //     days: days,
-    //     place: place,
-    //   },
-    // });
-    // setTutor([...response.results]);
+      const response = await axios.get('http://34.226.148.91/tutor', {
+        params: {
+          day: '2023-07-03',
+          beach_id: 1,
+        },
+      });
+      console.log('data:', response.data.result);
+      setTutor([...response.data.result]);
+    };
+
+    call();
   }, []);
+  console.log('tutor:', Tutor);
 
-  const onSearchHandle = () => {
-    const response = axios.get('/tutor', {
+  const onSearchHandle = async () => {
+    const response = await axios.get('http://34.226.148.91/tutor', {
       params: {
-        days: days,
-        place: place,
+        day: '2023-07-03',
+        beach_id: 1,
         time: selectedTime,
         level: selectedLevel,
       },
     });
+    setTutor([...response.data.result]);
   };
 
   return (
@@ -88,7 +81,7 @@ function TutorPage() {
       <Header />
       <div className={styles.contents}>
         <p className={styles.word}>
-          <div className={styles.info}>망상 해수욕장 7월 17일</div>
+          <div className={styles.info}>망상 해수욕장 7월 3일</div>
           <br />
           <div className={styles.info_word}>원하는 강사를 만나 보세요</div>
         </p>
@@ -149,39 +142,22 @@ function TutorPage() {
 
         {/* tutors */}
 
-        <Row gutter={[48, 60]}>
-          {Tutors &&
-            Tutors.map((tutor, index) => (
-              <React.Fragment key={index}>
-                <TutorCard
-                  id='1'
-                  image='https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000'
-                  level='초급'
-                  mbti='ESTP'
-                  personal='열정'
-                  verifi={true}
-                  name='서퍼 살롱'
-                />
-              </React.Fragment>
-            ))}
-        </Row>
-
         {/* 실제로 데이터 받아올 때 */}
-        {/* <Row gutter={[48, 60]}>
+        <Row gutter={[48, 60]}>
           {Tutor &&
             Tutor.map((tutor, index) => (
               <React.Fragment key={index}>
                 <TutorCard
-                  image={tutor.image}
-                  level={tutor.level}
-                  mbti={tutor.mbti}
-                  personal={tutor.personal}
-                  verifi={tutor.verifi}
+                  image='https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000'
+                  level={tutor.levels[0]}
+                  mbti='ENTJ'
+                  personal={tutor.tags[0]}
+                  verifi={tutor.tags[1]}
                   name={tutor.name}
                 />
               </React.Fragment>
             ))}
-        </Row> */}
+        </Row>
       </div>
       <Footer />
     </div>
