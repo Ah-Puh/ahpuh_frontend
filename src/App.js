@@ -12,7 +12,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={mainPage()} />
                 <Route exact path="/location" element={LocationPage()} />
-                <Route exact path="/days/:location" element={DayPage()} />
+                <Route exact path="/days/:locationId" element={DayPage()} />
                 <Route exact path="/tutor" element={TutorPage()} />
                 <Route
                     exact
