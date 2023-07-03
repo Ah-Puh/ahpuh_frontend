@@ -91,6 +91,7 @@ function BookPage() {
                             fontWeight: "700",
                             color: "#68A1A4",
                             marginTop: "50px",
+                            marginBottom: "50px"
                         }}
                     >
                         예약내역 확인하기
