@@ -8,7 +8,32 @@ import Footer from "../../components/Footer.js";
 
 function LocationPage() {
     const [searchValue, setSearchValue] = useState("");
-    const [cardData, setCardData] = useState([]);
+    const [cardData, setCardData] = useState([
+        {
+            id: 1,
+            name: "제주도",
+        },
+        {
+            id: 2,
+            name: "강원도",
+        },
+        {
+            id: 3,
+            name: "부산",
+        },
+        {
+            id: 4,
+            name: "망상",
+        },
+        {
+            id: 5,
+            name: "만리포",
+        },
+        {
+            id: 6,
+            name: "죽도",
+        },
+    ]);
     const navigate = useNavigate();
 
     // 카드 선택 시 날짜 선택 페이지로 이동
@@ -16,15 +41,32 @@ function LocationPage() {
         navigate(`/days/${locationId}`);
     };
 
-    // 서버에서 데이터를 받아오는 함수
-    const fetchData = async () => {
+    // 서버에서 검색결과 데이터를 받아오는 함수
+    const fetchResult = async () => {
         try {
-            const response = await axios.get(`/beach?keyword=${searchValue}`);
+            const response = await axios.get(
+                `http://54.145.149.194/beach?keyword=${searchValue}`
+            );
+            console.log(response.data.result);
             setCardData(response.data.result);
         } catch (error) {
             console.log(error);
         }
     };
+
+    // 처음에 서버에서 전체 데이터를 받아오는 함수
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`http://54.145.149.194/beach`);
+            setCardData(response.data.result);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     // 검색 버튼 클릭 시
     const handleClick = () => {
@@ -32,7 +74,7 @@ function LocationPage() {
 
         // 검색어가 비어있지 않은 경우에만 요청 보내기
         if (searchValue.trim() !== "") {
-            fetchData();
+            fetchResult();
         }
     };
 
@@ -85,7 +127,7 @@ function LocationPage() {
                                 }}
                                 onClick={() => goToDayPage(card.id)}
                             >
-                                <h1>{card.name}</h1>
+                                <div className="card_name">{card.name}</div>
                             </div>
                         ))}
                     </div>
