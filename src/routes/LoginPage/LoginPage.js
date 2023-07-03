@@ -13,7 +13,7 @@ function LoginPage() {
     const password = "myPassword";
     localStorage.setItem("id", id);
     localStorage.setItem("password", password);
-    navigate(`/`);
+    navigate(`/Signup_Success`);
   };
 
   const goToSignupPage = () => {
