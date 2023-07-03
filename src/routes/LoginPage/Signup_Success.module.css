@@ -34,33 +34,20 @@
     margin-bottom: 20px;
 }
 
-.input-container {
-    margin-bottom: 10px;
+.check {
+    width: 20px;
+    height: 20px;
+    animation: checkAnimation 1s ease-in-out infinite;
 }
 
-.input-field {
-    width: 300px;
-    height: 45px;
-    border-radius: 30px;
-    background-color: white;
-    border: none;
-    text-indent: 1em;
-}
-
-.login-button,
-.signup-button {
-    width: 300px;
-    height: 45px;
-    border-radius: 20px;
-    color: white;
-    background-color: #152f39;
-    border: none;
-    margin-top: 10px;
-    cursor: pointer;
-    outline: none;
-}
-
-.signup-button {
-    border: 1px solid white;
-    background-color: transparent;
+@keyframes checkAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Col } from 'antd';
-import './TutorCard.css';
+import styles from './TutorCard.module.css';
 
 function TutorCard(props) {
   const levelInfo = useRef();
@@ -18,29 +18,29 @@ function TutorCard(props) {
   return (
     <Col lg={8} md={12} xs={24}>
       <div style={{ position: 'relative' }}>
-        <a href={`/tutordetail/:${props.id}`} className='card'>
-          <div className='row'>
+        <a href={`/tutordetail/:${props.id}`} className={styles.card}>
+          <div className={styles.row}>
             <img
               style={{ width: '70%', height: '320px', marginRight: '12px' }}
               src={props.image}
               alt={props.name}
-              className='row-img'
+              className={styles.row_img}
             />
 
-            <div className='row-info'>
-              <div className='block-group'>
-                <div className='info-block' ref={levelInfo}>
+            <div className={styles.row_info}>
+              <div className={styles.block_group}>
+                <div className={styles.info_block} ref={levelInfo}>
                   # {props.level}
                 </div>
-                <div className='info-block'># {props.mbti}</div>
-                <div className='info-block'># {props.personal}</div>
+                <div className={styles.info_block}># {props.mbti}</div>
+                <div className={styles.info_block}># {props.personal}</div>
                 {props.verifi ? (
-                  <div className='info-block'># 자격증</div>
+                  <div className={styles.info_block}># 자격증</div>
                 ) : null}
               </div>
             </div>
           </div>
-          <div className='tutor-name'>{props.name}</div>
+          <div className={styles.tutor_name}>{props.name}</div>
         </a>
       </div>
     </Col>
