@@ -56,13 +56,13 @@ function TutorPage() {
           beach_id: 1,
         },
       });
-      console.log('data:', response.data.result);
+      // console.log('data:', response.data.result);
       setTutor([...response.data.result]);
     };
 
     call();
   }, []);
-  console.log('tutor:', Tutor);
+  // console.log('tutor:', Tutor);
 
   const onSearchHandle = async () => {
     const response = await axios.get('http://34.226.148.91/tutor', {
@@ -148,7 +148,8 @@ function TutorPage() {
             Tutor.map((tutor, index) => (
               <React.Fragment key={index}>
                 <TutorCard
-                  image='https://img.freepik.com/free-photo/adorable-kitty-looking-like-it-want-to-hunt_23-2149167099.jpg?w=2000'
+                  id={tutor.id}
+                  image='https://www.amadosurfcamp.com/wp-content/uploads/2021/03/algarve-surf-school-portugal-amado.jpg'
                   level={tutor.levels[0]}
                   mbti='ENTJ'
                   personal={tutor.tags[0]}
