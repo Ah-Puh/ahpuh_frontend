@@ -45,7 +45,7 @@ function LocationPage() {
     const fetchResult = async () => {
         try {
             const response = await axios.get(
-                `http://54.145.149.194/beach?keyword=${searchValue}`
+                `http://34.226.148.91/beach?keyword=${searchValue}`
             );
             console.log(response.data.result);
             setCardData(response.data.result);
@@ -57,7 +57,7 @@ function LocationPage() {
     // 처음에 서버에서 전체 데이터를 받아오는 함수
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://54.145.149.194/beach`);
+            const response = await axios.get(`http://34.226.148.91/beach`);
             setCardData(response.data.result);
         } catch (error) {
             console.log(error);
