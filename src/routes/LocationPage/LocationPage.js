@@ -48,10 +48,6 @@ function LocationPage() {
         setSearchValue(e.target.value);
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     return (
         <div className="main">
             <Hedaer></Hedaer>
