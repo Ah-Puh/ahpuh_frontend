@@ -38,6 +38,10 @@ function LocationPage() {
 
     // 카드 선택 시 날짜 선택 페이지로 이동
     const goToDayPage = (locationId) => {
+        localStorage.setItem("locationId", '2');
+
+        console.log(locationId);
+
         navigate(`/days/${locationId}`);
     };
 
