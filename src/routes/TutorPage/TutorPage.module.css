@@ -6,6 +6,7 @@
 }
 
 .contents {
+  width: 90%;
   padding: 48px 0px;
 }
 
@@ -19,16 +20,16 @@
   margin-bottom: 8px;
 }
 
-.info-word {
+.info_word {
   font-size: 20px;
 }
 
-.btn-group {
+.btn_group {
   display: flex;
 }
 
-.btn-time,
-.btn-level {
+.btn_time,
+.btn_level {
   padding: 20px 10px;
   background-color: #fff;
   font-size: 20px;
@@ -82,7 +83,7 @@
   border-top: 1px solid #000;
 }
 
-.search {
+.tutorsearch {
   margin-left: 12px;
   border: none;
   background-color: #fff;

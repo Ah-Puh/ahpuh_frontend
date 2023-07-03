@@ -1,38 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from "./BookPage.module.css";
 import Hedaer from "../../components/Header.js";
 import tutor_image from "../../image/tutor_image.png";
 import Footer from "../../components/Footer";
 
 function BookPage() {
-    const [classIntro, setClassIntro] = useState("");
-    const [classAddress, setClassAddress] = useState("");
-    const [classTime, setClassTime] = useState("");
-    const [classNumber, setClassNumber] = useState("");
-    const navigate = useNavigate();
+  const [classIntro, setClassIntro] = useState('');
+  const [classAddress, setClassAddress] = useState('');
+  const [classTime, setClassTime] = useState('');
+  const [classNumber, setClassNumber] = useState('');
+  const navigate = useNavigate();
 
-    const goToMyPage = () => {
-        navigate(`/mypage`);
+  const goToMyPage = () => {
+    navigate(`/mypage`);
+  };
+
+  useEffect(() => {
+    // localStorage에서 데이터를 가져오는 함수
+    const fetchLocalStorageData = () => {
+      const intro = localStorage.getItem('classIntro');
+      const address = localStorage.getItem('classAddress');
+      const time = localStorage.getItem('classTime');
+      const number = localStorage.getItem('classNumber');
+
+      setClassIntro(intro);
+      setClassAddress(address);
+      setClassTime(time);
+      setClassNumber(number);
     };
 
-    useEffect(() => {
-        // localStorage에서 데이터를 가져오는 함수
-        const fetchLocalStorageData = () => {
-            const intro = localStorage.getItem("classIntro");
-            const address = localStorage.getItem("classAddress");
-            const time = localStorage.getItem("classTime");
-            const number = localStorage.getItem("classNumber");
-
-            setClassIntro(intro);
-            setClassAddress(address);
-            setClassTime(time);
-            setClassNumber(number);
-        };
-
-        fetchLocalStorageData();
-    }, []);
+    fetchLocalStorageData();
+  }, []);
 
     return (
         <div>
@@ -93,10 +92,10 @@ function BookPage() {
                     </h1>
                 </button>
 
-                <Footer></Footer>
-            </div>
-        </div>
-    );
+        <Footer></Footer>
+      </div>
+    </div>
+  );
 }
 
 export default BookPage;
