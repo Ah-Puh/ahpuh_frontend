@@ -4,6 +4,7 @@ import axios from "axios";
 import Hedaer from "../../components/Header.js";
 import "./LocationPage.css";
 import logo from "../../image/search_icon.png";
+import Footer from "../../components/Footer.js";
 
 function LocationPage() {
     const [searchValue, setSearchValue] = useState("");
@@ -15,10 +16,24 @@ function LocationPage() {
         navigate(`/days/${locationId}`);
     };
 
+    // 서버에서 데이터를 받아오는 함수
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`/beach?keyword=${searchValue}`);
+            setCardData(response.data.result);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     // 검색 버튼 클릭 시
     const handleClick = () => {
-        alert("버튼이 클릭되었습니다!");
         console.log("검색어:", searchValue);
+
+        // 검색어가 비어있지 않은 경우에만 요청 보내기
+        if (searchValue.trim() !== "") {
+            fetchData();
+        }
     };
 
     // 검색어 입력 후 엔터키 입력 시
@@ -33,22 +48,9 @@ function LocationPage() {
         setSearchValue(e.target.value);
     };
 
-    // 검색어가 변경될 때마다 실행
     useEffect(() => {
-        // 서버에서 데이터를 받아오는 함수
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(
-                    `/beach?keyword=${searchValue}`
-                );
-                setCardData(response.data.result);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
         fetchData();
-    }, [searchValue]);
+    }, []);
 
     return (
         <div className="main">
@@ -72,7 +74,7 @@ function LocationPage() {
                                 src={logo}
                                 alt="logo"
                                 className="logo"
-                                style={{ width: "20px" }}
+                                style={{ width: "20px", height: "23px" }}
                             />
                         </button>
                     </div>
@@ -93,6 +95,7 @@ function LocationPage() {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 }
