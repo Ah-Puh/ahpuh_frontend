@@ -15,10 +15,12 @@ function TutorCard(props) {
     }
   }, []);
 
+  localStorage.setItem('tutorId', props.id);
+
   return (
     <Col lg={8} md={12} xs={24}>
       <div style={{ position: 'relative' }}>
-        <a href={`/tutordetail/:${props.id}`} className={styles.card}>
+        <a href={`/tutordetail/${props.id}`} className={styles.card}>
           <div className={styles.row}>
             <img
               style={{ width: '70%', height: '320px', marginRight: '12px' }}
