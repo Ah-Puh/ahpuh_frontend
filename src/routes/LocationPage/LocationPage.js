@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Hedaer from "../../components/Header.js";
-import styles from "./LocationPage.module.css";
+import "./LocationPage.css";
 import logo from "../../image/search_icon.png";
 import Footer from "../../components/Footer.js";
 
