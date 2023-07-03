@@ -88,7 +88,7 @@ useEffect(() => {
     4,
   ];
 
-  const addContent = ({ date }:any) => {
+  const addContent = ({ date }) => {
     // 해당 날짜(하루)에 추가할 컨텐츠의 배열
     const contents = [];
     if (time.find((day) => day === moment(date).format("YYYY-MM-DD"))) {
