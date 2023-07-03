@@ -5,7 +5,7 @@ import mainPage from "./routes/MainPage/mainPage";
 import LocationPage from "./routes/LocationPage/LocationPage";
 import TutorPage from "./routes/TutorPage/TutorPage";
 import TutorDetailPage from "./routes/TutorDetailPage/TutorDetailPage";
-
+import BookPage from "./routes/BookPage/BookPage";
 function App() {
     return (
         <div>
@@ -19,6 +19,8 @@ function App() {
                     path="/tutordetail/:tutorId"
                     element={TutorDetailPage()}
                 />
+                <Route exact path="/book" element={BookPage()} />
+                <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
         </div>
     );
