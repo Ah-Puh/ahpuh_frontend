@@ -10,7 +10,7 @@ function SignupPage() {
       <div className='viewport'>
         <div className='contents'>
           <Header />
-            <img className='img' src={picture} alt='Main Picture' />
+            <img className='img' src={picture}/>
           <div className='login-container'>
             <h1 className='login-title'>회원가입</h1>
             <div className='input-container'>
