@@ -5,6 +5,7 @@ import mainPage from "./routes/MainPage/mainPage";
 import LocationPage from "./routes/LocationPage/LocationPage";
 import TutorPage from "./routes/TutorPage/TutorPage";
 import TutorDetailPage from "./routes/TutorDetailPage/TutorDetailPage";
+import LoginPage from "./routes/LoginPage/LoginPage";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     path="/tutordetail/:tutorId"
                     element={TutorDetailPage()}
                 />
+                <Route exact path="/Login" element={LoginPage()} />
             </Routes>
         </div>
     );
