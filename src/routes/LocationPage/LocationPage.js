@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import Hedaer from "../../components/Header.js";
-import styles from "./LocationPage.module.css";
-import logo from "../../image/search_icon.png";
-import Footer from "../../components/Footer.js";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Hedaer from '../../components/Header.js';
+import styles from './LocationPage.module.css';
+import logo from '../../image/search_icon.png';
+import Footer from '../../components/Footer.js';
 
 function LocationPage() {
   const [searchValue, setSearchValue] = useState('');
@@ -48,50 +48,47 @@ function LocationPage() {
     setSearchValue(e.target.value);
   };
 
-    return (
-        <div className={styles.main}>
-            <Hedaer></Hedaer>
-            <div className={styles.wrap}>
-                <div className={styles.contaier}>
-                    <div className={styles.title}>
-                        <h1>어디로 떠나시나요?</h1>
-                    </div>
-                    <div className={styles.search}>
-                        <input
-                            className={styles.search_input}
-                            type="text"
-                            placeholder="여행 장소를 검색해주세요."
-                            value={searchValue}
-                            onChange={handleInputChange}
-                            onKeyDown={handleKeyDown}
-                        />
-                        <button className={styles.search_btn} onClick={handleClick}>
-                            <img
-                                src={logo}
-                                alt="logo"
-                                className={styles.logo}
-                                style={{ width: "20px", height: "23px" }}
-                            />
-                        </button>
-                    </div>
-                    <div className={styles.card_section}>
-                        {cardData.map((card) => (
-                            <div
-                                key={card.id}
-                                className={styles.card}
-                                style={{
-                                    backgroundImage: `url(/location_${card.id}.jpeg)`,
-                                    backgroundSize: "cover",
-                                }}
-                                onClick={() => goToDayPage(card.id)}
-                            >
-                                <h1>{card.name}</h1>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <Footer></Footer>
+  return (
+    <div className={styles.main}>
+      <Hedaer></Hedaer>
+      <div className={styles.wrap}>
+        <div className={styles.container}>
+          <div className={styles.title}>
+            <h1>어디로 떠나시나요?</h1>
+          </div>
+          <div className={styles.search}>
+            <input
+              className={styles.search_input}
+              type='text'
+              placeholder='여행 장소를 검색해주세요.'
+              value={searchValue}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+            />
+            <button className={styles.search_btn} onClick={handleClick}>
+              <img
+                src={logo}
+                alt='logo'
+                className='logo'
+                style={{ width: '20px', height: '23px' }}
+              />
+            </button>
+          </div>
+          <div className={styles.card_section}>
+            {cardData.map((card) => (
+              <div
+                key={card.id}
+                className='card'
+                style={{
+                  backgroundImage: `url(/location_${card.id}.jpeg)`,
+                  backgroundSize: 'cover',
+                }}
+                onClick={() => goToDayPage(card.id)}
+              >
+                <h1>{card.name}</h1>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Footer></Footer>
